@@ -27,7 +27,7 @@ int main()
 
     stdio_init_all();
     // Initialize SPI pins
-    spi_init(spi0, 12 * 1000);  // 12MHz SPI clock
+    spi_init(spi0, 12 * 1000000);  // 12MHz SPI clock
 
 
     gpio_set_function(PICO_DEFAULT_SPI_RX_PIN, GPIO_FUNC_SPI);
@@ -85,6 +85,6 @@ int main()
         sample_index = (sample_index + 1) % NUM_SAMPLES;
         output_a = !output_a;  // Alternate between outputs
 
-        // No sleep needed as we're running at full speed
+        sleep_ms(1);
     }
 }
